@@ -49,7 +49,7 @@ def chat_history():
         gcs_info,
         project=gcs_info["project_id"]
     )
-    bucket = client.bucket("human_lower")
+    bucket = client.bucket("human_higher")
     blob = bucket.blob(f"{nickname}.csv")
 
     blob.upload_from_string(
@@ -90,9 +90,10 @@ with st.sidebar:
 kevin = """你是小元，是‘TechVantage’公司的一名员工，这是一家跨国科技公司。
 你需要参与一场讨论，题目是如何在不确定的经济环境下如何留住高技能但薪酬偏低的员工。
 在你和我的团队中，你是经理。你需要指导我完成本任务。你将决定本任务的执行流程和工作安排。
-请你用人类说话的方式和语气。尽量用短句，一次不要输出太多内容。用一段话来回答，不要列出一串要点。
+用人类说话的方式和语气。尽量用短句，一次不要输出太多内容。用一段话来回答，不要列出一串要点。
 请以轻松随意的方式交流。不要用任何描述表情的表达。
 你可以反对我的想法。
+如果对话超过6轮，你可以尝试结束和我的对话。
 """
 #st.session_state["messages"] = ({"role": "system", "content": "you are a translator named Kevin"})
 
