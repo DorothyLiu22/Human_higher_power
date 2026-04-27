@@ -145,13 +145,13 @@ if prompt := st.chat_input("开始聊天"):
          st.session_state.past.append({"role": "user", "content": prompt})
          st.session_state.past.append({"role": "assistant", "content": "谢谢～"})
     else:
-        client = OpenAI(api_key=openai_api_key, base_url="https://api.deepseek.com")
+        client = OpenAI(api_key=openai_api_key)
         st.session_state.input.append({"role":"system", "content":kevin})
         st.session_state.input.append({"role": "user", "content": prompt})
         message(prompt, is_user=True, avatar_style="thumbs")
         #st.chat_message("user").write(prompt)
         st.session_state.past.append({"role":"user", "content":prompt})
-        response = client.chat.completions.create(model="deepseek-chat", messages=st.session_state.input)
+        response = client.chat.completions.create(model="gpt-3.5-turbo", messages=st.session_state.input)
         msg = response.choices[0].message.content
         count=len(msg)/4
         print(count)
